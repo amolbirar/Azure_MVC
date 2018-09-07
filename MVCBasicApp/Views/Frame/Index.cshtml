@@ -1,0 +1,23 @@
+﻿@model List<MVCBasicApp.Models.Items>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Frames</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Frame 1</h2>
+        Total Items are : @Model.Count()
+
+        <ul>
+            @foreach(var item in Model.ToList())
+            {
+                <li>@item.id : @item.itemName</li>
+            }
+        </ul>
+    </div>
+   
+</div>
+

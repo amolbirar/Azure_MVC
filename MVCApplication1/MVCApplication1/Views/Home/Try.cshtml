@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Try";
+}
+<h2>@ViewBag.Title</h2>
+<ul>
+    @for (int i = 0; i < 5; i++)
+    {
+        <li>@i</li>}
+</ul>
+
+@{var t = "abcd";}
+@{var t1 = t + " ttttt";} <h5>Variable is @t1</h5>
+"DayOfweek is" + @DateTime.Now.DayOfWeek
+
+<table border="1">
+    <tr><td>Day</td><td>@DateTime.Now.Day</td></tr>
+    <tr><td>Date</td><td>@DateTime.Now.Date</td></tr>
+</table>
+<!-- If Else condition-->
+@{
+    var conditionOp = "";
+    if (DateTime.Now.ToLocalTime().Hour <= 12)
+    {
+        conditionOp = "Good Morning";
+    }
+    else
+    {
+        conditionOp = "Good Afternoon";
+    }
+    @conditionOp;
+}
+
+@{var v = 12;
+    if (v.IsInt()) {conditionOp = "int";}
+    else {conditionOp = "not int";}
+}
+@conditionOp;
+
+
+
+
+
+
+
+
+

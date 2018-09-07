@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AgentX_V7ModelStoreContainer" CdmEntityContainer="AgentX_V7Entities">
+    <EntitySetMapping Name="DataProviders">
+      <EntityTypeMapping TypeName="AgentX_V7Model.DataProvider">
+        <MappingFragment StoreEntitySet="DataProvider">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AssemblyName" ColumnName="AssemblyName" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maps">
+      <EntityTypeMapping TypeName="AgentX_V7Model.Map">
+        <MappingFragment StoreEntitySet="Map">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MapItems">
+      <EntityTypeMapping TypeName="AgentX_V7Model.MapItem">
+        <MappingFragment StoreEntitySet="MapItem">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MapId" ColumnName="MapId" />
+          <ScalarProperty Name="SourceField" ColumnName="SourceField" />
+          <ScalarProperty Name="DestinationRoot" ColumnName="DestinationRoot" />
+          <ScalarProperty Name="DestinationPath" ColumnName="DestinationPath" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="IndexedProperty" ColumnName="IndexedProperty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PageRegistryDataProviders">
+      <EntityTypeMapping TypeName="AgentX_V7Model.PageRegistryDataProvider">
+        <MappingFragment StoreEntitySet="PageRegistryDataProvider">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PageRegistryItemId" ColumnName="PageRegistryItemId" />
+          <ScalarProperty Name="DataProviderId" ColumnName="DataProviderId" />
+          <ScalarProperty Name="ExecutionOrder" ColumnName="ExecutionOrder" />
+          <ScalarProperty Name="StopOnError" ColumnName="StopOnError" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PageRegistryItems">
+      <EntityTypeMapping TypeName="AgentX_V7Model.PageRegistryItem">
+        <MappingFragment StoreEntitySet="PageRegistryItem">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AssemblyName" ColumnName="AssemblyName" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profiles">
+      <EntityTypeMapping TypeName="AgentX_V7Model.Profile">
+        <MappingFragment StoreEntitySet="Profile">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProfilePageRegistryItems">
+      <EntityTypeMapping TypeName="AgentX_V7Model.ProfilePageRegistryItem">
+        <MappingFragment StoreEntitySet="ProfilePageRegistryItem">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="PageRegistryItemId" ColumnName="PageRegistryItemId" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Agents">
+      <EntityTypeMapping TypeName="AgentX_V7Model.Agent">
+        <MappingFragment StoreEntitySet="Agent">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="FirstNames" ColumnName="FirstNames" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AgentMessages">
+      <EntityTypeMapping TypeName="AgentX_V7Model.AgentMessage">
+        <MappingFragment StoreEntitySet="AgentMessage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+          <ScalarProperty Name="MessageTemplateTypeId" ColumnName="MessageTemplateTypeId" />
+          <ScalarProperty Name="LastUsedMessageId" ColumnName="LastUsedMessageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AgentProfiles">
+      <EntityTypeMapping TypeName="AgentX_V7Model.AgentProfile">
+        <MappingFragment StoreEntitySet="AgentProfile">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="TargetDescription" ColumnName="TargetDescription" />
+          <ScalarProperty Name="SkinCode" ColumnName="SkinCode" />
+          <ScalarProperty Name="AvatarCode" ColumnName="AvatarCode" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AgentProfileThresholds">
+      <EntityTypeMapping TypeName="AgentX_V7Model.AgentProfileThreshold">
+        <MappingFragment StoreEntitySet="AgentProfileThreshold">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AgentProfileId" ColumnName="AgentProfileId" />
+          <ScalarProperty Name="MessageThresholdId" ColumnName="MessageThresholdId" />
+          <ScalarProperty Name="ThresholdMet" ColumnName="ThresholdMet" />
+          <ScalarProperty Name="DateRecorded" ColumnName="DateRecorded" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EffortEfficiencies">
+      <EntityTypeMapping TypeName="AgentX_V7Model.EffortEfficiency">
+        <MappingFragment StoreEntitySet="EffortEfficiency">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EfficiencyThresholdId" ColumnName="EfficiencyThresholdId" />
+          <ScalarProperty Name="EffortThresholdId" ColumnName="EffortThresholdId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="AgentX_V7Model.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RiskClassifications">
+      <EntityTypeMapping TypeName="AgentX_V7Model.RiskClassification">
+        <MappingFragment StoreEntitySet="RiskClassification">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Targets">
+      <EntityTypeMapping TypeName="AgentX_V7Model.Target">
+        <MappingFragment StoreEntitySet="Target">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Profile" ColumnName="Profile" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Effort" ColumnName="Effort" />
+          <ScalarProperty Name="Efficiency" ColumnName="Efficiency" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TargetSettings">
+      <EntityTypeMapping TypeName="AgentX_V7Model.TargetSetting">
+        <MappingFragment StoreEntitySet="TargetSetting">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerIcons">
+      <EntityTypeMapping TypeName="AgentX_V7Model.CustomerIcon">
+        <MappingFragment StoreEntitySet="CustomerIcon">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="RiskClassification" ColumnName="RiskClassification" />
+          <ScalarProperty Name="MinAge" ColumnName="MinAge" />
+          <ScalarProperty Name="MaxAge" ColumnName="MaxAge" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExpressionTypes">
+      <EntityTypeMapping TypeName="AgentX_V7Model.ExpressionType">
+        <MappingFragment StoreEntitySet="ExpressionType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ExecuteAll" ColumnName="ExecuteAll" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IconCategories">
+      <EntityTypeMapping TypeName="AgentX_V7Model.IconCategory">
+        <MappingFragment StoreEntitySet="IconCategory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IconExpressions">
+      <EntityTypeMapping TypeName="AgentX_V7Model.IconExpression">
+        <MappingFragment StoreEntitySet="IconExpression">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ExpressionTypeId" ColumnName="ExpressionTypeId" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="Operator" ColumnName="Operator" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="IconDescription" ColumnName="IconDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IconMaps">
+      <EntityTypeMapping TypeName="AgentX_V7Model.IconMap">
+        <MappingFragment StoreEntitySet="IconMap">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IconCategoryId" ColumnName="IconCategoryId" />
+          <ScalarProperty Name="SourceValue" ColumnName="SourceValue" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessageTags">
+      <EntityTypeMapping TypeName="AgentX_V7Model.MessageTag">
+        <MappingFragment StoreEntitySet="MessageTag">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+          <ScalarProperty Name="ModelPath" ColumnName="ModelPath" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessageTemplates">
+      <EntityTypeMapping TypeName="AgentX_V7Model.MessageTemplate">
+        <MappingFragment StoreEntitySet="MessageTemplate">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MessageTemplateTypeId" ColumnName="MessageTemplateTypeId" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessageTemplateTags">
+      <EntityTypeMapping TypeName="AgentX_V7Model.MessageTemplateTag">
+        <MappingFragment StoreEntitySet="MessageTemplateTag">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MessageTemplateId" ColumnName="MessageTemplateId" />
+          <ScalarProperty Name="MessageTagId" ColumnName="MessageTagId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessageTemplateTypes">
+      <EntityTypeMapping TypeName="AgentX_V7Model.MessageTemplateType">
+        <MappingFragment StoreEntitySet="MessageTemplateType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="PageRegistryItemId" ColumnName="PageRegistryItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessageThresholds">
+      <EntityTypeMapping TypeName="AgentX_V7Model.MessageThreshold">
+        <MappingFragment StoreEntitySet="MessageThreshold">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Effort" ColumnName="Effort" />
+          <ScalarProperty Name="Efficiency" ColumnName="Efficiency" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="AgentX_V7Model.Task">
+        <MappingFragment StoreEntitySet="Task">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+          <ScalarProperty Name="ActionIdentifier" ColumnName="ActionIdentifier" />
+          <ScalarProperty Name="InitiatedDate" ColumnName="InitiatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessageEfficiencyThresholds">
+      <EntityTypeMapping TypeName="AgentX_V7Model.MessageEfficiencyThreshold">
+        <MappingFragment StoreEntitySet="MessageEfficiencyThreshold">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MessageTemplateTypeId" ColumnName="MessageTemplateTypeId" />
+          <ScalarProperty Name="EfficiencyThresholdId" ColumnName="EfficiencyThresholdId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

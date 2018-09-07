@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ad34436cfbdc4aa5a5ceff7ee1e18315" Name="Diagram1">
+        <EntityTypeShape EntityType="AgentX_V7Model.DataProvider" Width="1.5" PointX="8.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.Map" Width="1.5" PointX="11" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.MapItem" Width="1.5" PointX="13.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.PageRegistryDataProvider" Width="1.5" PointX="11" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.PageRegistryItem" Width="1.5" PointX="3.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.Profile" Width="1.5" PointX="3.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.ProfilePageRegistryItem" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.Agent" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.AgentMessage" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.AgentProfile" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.AgentProfileThreshold" Width="1.5" PointX="5.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.EffortEfficiency" Width="1.5" PointX="7.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.sysdiagram" Width="1.5" PointX="10.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.RiskClassification" Width="1.5" PointX="12.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.Target" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.TargetSetting" Width="1.5" PointX="13.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.CustomerIcon" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.ExpressionType" Width="1.5" PointX="5.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.IconCategory" Width="1.5" PointX="13.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.IconExpression" Width="1.5" PointX="8" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.IconMap" Width="1.5" PointX="14.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.MessageTag" Width="1.5" PointX="15.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.MessageTemplate" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.MessageTemplateTag" Width="1.5" PointX="15.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.MessageTemplateType" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.MessageThreshold" Width="1.5" PointX="15.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.Task" Width="1.5" PointX="15.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentX_V7Model.MessageEfficiencyThreshold" Width="1.5" PointX="10.75" PointY="15.875" IsExpanded="true" />
+        <AssociationConnector Association="AgentX_V7Model.FK_Map_DataProvider" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentX_V7Model.FK_PageRegistryDataProvider_DataProvider" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentX_V7Model.FK_MapItem_Map" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentX_V7Model.FK_PageRegistryDataProvider_PageRegistry" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentX_V7Model.FK_ProfilePageRegistry_PageRegistry" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentX_V7Model.FK_AgentProfile_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentX_V7Model.FK_ProfileContext_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentX_V7Model.FK_AgentMessage_Agent" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentX_V7Model.FK_AgentProfile_Agent" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentX_V7Model.FK_Target_Agent" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentX_V7Model.FK_AgentMessage_MessageTemplateType" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentX_V7Model.FK_IconExpression_ExpressionType" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentX_V7Model.FK_MessageTemplate_MessageTemplateType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

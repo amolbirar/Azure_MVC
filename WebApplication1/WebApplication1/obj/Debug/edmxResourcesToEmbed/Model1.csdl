@@ -1,0 +1,552 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AgentX_V7Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DataProvider">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="AssemblyName" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ClassName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Map" Relationship="Self.FK_Map_DataProvider" FromRole="DataProvider" ToRole="Map" />
+    <NavigationProperty Name="PageRegistryDataProviders" Relationship="Self.FK_PageRegistryDataProvider_DataProvider" FromRole="DataProvider" ToRole="PageRegistryDataProvider" />
+  </EntityType>
+  <EntityType Name="Map">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DataProvider" Relationship="Self.FK_Map_DataProvider" FromRole="Map" ToRole="DataProvider" />
+    <NavigationProperty Name="MapItems" Relationship="Self.FK_MapItem_Map" FromRole="Map" ToRole="MapItem" />
+  </EntityType>
+  <EntityType Name="MapItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MapId" Type="Int32" Nullable="false" />
+    <Property Name="SourceField" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="DestinationRoot" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="DestinationPath" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="IndexedProperty" Type="Boolean" />
+    <NavigationProperty Name="Map" Relationship="Self.FK_MapItem_Map" FromRole="MapItem" ToRole="Map" />
+  </EntityType>
+  <EntityType Name="PageRegistryDataProvider">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PageRegistryItemId" Type="Int32" Nullable="false" />
+    <Property Name="DataProviderId" Type="Int32" Nullable="false" />
+    <Property Name="ExecutionOrder" Type="Int32" Nullable="false" />
+    <Property Name="StopOnError" Type="Boolean" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DataProvider" Relationship="Self.FK_PageRegistryDataProvider_DataProvider" FromRole="PageRegistryDataProvider" ToRole="DataProvider" />
+    <NavigationProperty Name="PageRegistryItem" Relationship="Self.FK_PageRegistryDataProvider_PageRegistry" FromRole="PageRegistryDataProvider" ToRole="PageRegistryItem" />
+  </EntityType>
+  <EntityType Name="PageRegistryItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="AssemblyName" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ClassName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="PageRegistryDataProviders" Relationship="Self.FK_PageRegistryDataProvider_PageRegistry" FromRole="PageRegistryItem" ToRole="PageRegistryDataProvider" />
+    <NavigationProperty Name="ProfilePageRegistryItems" Relationship="Self.FK_ProfilePageRegistry_PageRegistry" FromRole="PageRegistryItem" ToRole="ProfilePageRegistryItem" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AgentProfiles" Relationship="Self.FK_AgentProfile_Profile" FromRole="Profile" ToRole="AgentProfile" />
+    <NavigationProperty Name="ProfilePageRegistryItems" Relationship="Self.FK_ProfileContext_Profile" FromRole="Profile" ToRole="ProfilePageRegistryItem" />
+  </EntityType>
+  <EntityType Name="ProfilePageRegistryItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProfileId" Type="Int32" Nullable="false" />
+    <Property Name="PageRegistryItemId" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="PageRegistryItem" Relationship="Self.FK_ProfilePageRegistry_PageRegistry" FromRole="ProfilePageRegistryItem" ToRole="PageRegistryItem" />
+    <NavigationProperty Name="Profile" Relationship="Self.FK_ProfileContext_Profile" FromRole="ProfilePageRegistryItem" ToRole="Profile" />
+  </EntityType>
+  <EntityType Name="Agent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="FirstNames" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="AgentMessages" Relationship="Self.FK_AgentMessage_Agent" FromRole="Agent" ToRole="AgentMessage" />
+    <NavigationProperty Name="AgentProfiles" Relationship="Self.FK_AgentProfile_Agent" FromRole="Agent" ToRole="AgentProfile" />
+    <NavigationProperty Name="Targets" Relationship="Self.FK_Target_Agent" FromRole="Agent" ToRole="Target" />
+  </EntityType>
+  <EntityType Name="AgentMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AgentId" Type="Int32" Nullable="false" />
+    <Property Name="MessageTemplateTypeId" Type="Int32" Nullable="false" />
+    <Property Name="LastUsedMessageId" Type="Int32" />
+    <NavigationProperty Name="Agent" Relationship="Self.FK_AgentMessage_Agent" FromRole="AgentMessage" ToRole="Agent" />
+    <NavigationProperty Name="MessageTemplateType" Relationship="Self.FK_AgentMessage_MessageTemplateType" FromRole="AgentMessage" ToRole="MessageTemplateType" />
+  </EntityType>
+  <EntityType Name="AgentProfile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AgentId" Type="Int32" Nullable="false" />
+    <Property Name="ProfileId" Type="Int32" Nullable="false" />
+    <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+    <Property Name="TargetDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SkinCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AvatarCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Profile" Relationship="Self.FK_AgentProfile_Profile" FromRole="AgentProfile" ToRole="Profile" />
+    <NavigationProperty Name="Agent" Relationship="Self.FK_AgentProfile_Agent" FromRole="AgentProfile" ToRole="Agent" />
+  </EntityType>
+  <EntityType Name="AgentProfileThreshold">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AgentProfileId" Type="Int32" />
+    <Property Name="MessageThresholdId" Type="Int32" />
+    <Property Name="ThresholdMet" Type="Boolean" />
+    <Property Name="DateRecorded" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="EffortEfficiency">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="EfficiencyThresholdId" Type="Int32" />
+    <Property Name="EffortThresholdId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="RiskClassification">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Prefix" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Target">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="AgentId" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Profile" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Effort" Type="Int32" Nullable="false" />
+    <Property Name="Efficiency" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Agent" Relationship="Self.FK_Target_Agent" FromRole="Target" ToRole="Agent" />
+  </EntityType>
+  <EntityType Name="TargetSetting">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CustomerIcon">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="RiskClassification" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="MinAge" Type="Int32" />
+    <Property Name="MaxAge" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ExpressionType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ExecuteAll" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="IconExpressions" Relationship="Self.FK_IconExpression_ExpressionType" FromRole="ExpressionType" ToRole="IconExpression" />
+  </EntityType>
+  <EntityType Name="IconCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="IconExpression">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExpressionTypeId" Type="Int32" Nullable="false" />
+    <Property Name="Source" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Operator" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Icon" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="IconDescription" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ExpressionType" Relationship="Self.FK_IconExpression_ExpressionType" FromRole="IconExpression" ToRole="ExpressionType" />
+  </EntityType>
+  <EntityType Name="IconMap">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="IconCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="SourceValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Icon" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MessageTag">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tag" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ModelPath" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MessageTemplate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="MessageTemplateTypeId" Type="Int32" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="MessageTemplateType" Relationship="Self.FK_MessageTemplate_MessageTemplateType" FromRole="MessageTemplate" ToRole="MessageTemplateType" />
+  </EntityType>
+  <EntityType Name="MessageTemplateTag">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="MessageTemplateId" Type="Int32" Nullable="false" />
+    <Property Name="MessageTagId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MessageTemplateType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="PageRegistryItemId" Type="Int32" />
+    <NavigationProperty Name="AgentMessages" Relationship="Self.FK_AgentMessage_MessageTemplateType" FromRole="MessageTemplateType" ToRole="AgentMessage" />
+    <NavigationProperty Name="MessageTemplates" Relationship="Self.FK_MessageTemplate_MessageTemplateType" FromRole="MessageTemplateType" ToRole="MessageTemplate" />
+  </EntityType>
+  <EntityType Name="MessageThreshold">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Effort" Type="Int32" Nullable="false" />
+    <Property Name="Efficiency" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="AgentId" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AgentId" Type="Int32" Nullable="false" />
+    <Property Name="ActionIdentifier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InitiatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="MessageEfficiencyThreshold">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="MessageTemplateTypeId" />
+      <PropertyRef Name="EfficiencyThresholdId" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="MessageTemplateTypeId" Type="Int32" Nullable="false" />
+    <Property Name="EfficiencyThresholdId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Map_DataProvider">
+    <End Role="DataProvider" Type="Self.DataProvider" Multiplicity="1" />
+    <End Role="Map" Type="Self.Map" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DataProvider">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Map">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PageRegistryDataProvider_DataProvider">
+    <End Role="DataProvider" Type="Self.DataProvider" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PageRegistryDataProvider" Type="Self.PageRegistryDataProvider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DataProvider">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PageRegistryDataProvider">
+        <PropertyRef Name="DataProviderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MapItem_Map">
+    <End Role="Map" Type="Self.Map" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MapItem" Type="Self.MapItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Map">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MapItem">
+        <PropertyRef Name="MapId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PageRegistryDataProvider_PageRegistry">
+    <End Role="PageRegistryItem" Type="Self.PageRegistryItem" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PageRegistryDataProvider" Type="Self.PageRegistryDataProvider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PageRegistryItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PageRegistryDataProvider">
+        <PropertyRef Name="PageRegistryItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfilePageRegistry_PageRegistry">
+    <End Role="PageRegistryItem" Type="Self.PageRegistryItem" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProfilePageRegistryItem" Type="Self.ProfilePageRegistryItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PageRegistryItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProfilePageRegistryItem">
+        <PropertyRef Name="PageRegistryItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AgentProfile_Profile">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+    <End Role="AgentProfile" Type="Self.AgentProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AgentProfile">
+        <PropertyRef Name="ProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfileContext_Profile">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+    <End Role="ProfilePageRegistryItem" Type="Self.ProfilePageRegistryItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProfilePageRegistryItem">
+        <PropertyRef Name="ProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AgentMessage_Agent">
+    <End Role="Agent" Type="Self.Agent" Multiplicity="1" />
+    <End Role="AgentMessage" Type="Self.AgentMessage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AgentMessage">
+        <PropertyRef Name="AgentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AgentProfile_Agent">
+    <End Role="Agent" Type="Self.Agent" Multiplicity="1" />
+    <End Role="AgentProfile" Type="Self.AgentProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AgentProfile">
+        <PropertyRef Name="AgentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Target_Agent">
+    <End Role="Agent" Type="Self.Agent" Multiplicity="1" />
+    <End Role="Target" Type="Self.Target" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Target">
+        <PropertyRef Name="AgentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AgentMessage_MessageTemplateType">
+    <End Role="MessageTemplateType" Type="Self.MessageTemplateType" Multiplicity="1" />
+    <End Role="AgentMessage" Type="Self.AgentMessage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MessageTemplateType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AgentMessage">
+        <PropertyRef Name="MessageTemplateTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IconExpression_ExpressionType">
+    <End Role="ExpressionType" Type="Self.ExpressionType" Multiplicity="1" />
+    <End Role="IconExpression" Type="Self.IconExpression" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExpressionType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IconExpression">
+        <PropertyRef Name="ExpressionTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MessageTemplate_MessageTemplateType">
+    <End Role="MessageTemplateType" Type="Self.MessageTemplateType" Multiplicity="0..1" />
+    <End Role="MessageTemplate" Type="Self.MessageTemplate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MessageTemplateType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MessageTemplate">
+        <PropertyRef Name="MessageTemplateTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AgentX_V7Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DataProviders" EntityType="Self.DataProvider" />
+    <EntitySet Name="Maps" EntityType="Self.Map" />
+    <EntitySet Name="MapItems" EntityType="Self.MapItem" />
+    <EntitySet Name="PageRegistryDataProviders" EntityType="Self.PageRegistryDataProvider" />
+    <EntitySet Name="PageRegistryItems" EntityType="Self.PageRegistryItem" />
+    <EntitySet Name="Profiles" EntityType="Self.Profile" />
+    <EntitySet Name="ProfilePageRegistryItems" EntityType="Self.ProfilePageRegistryItem" />
+    <EntitySet Name="Agents" EntityType="Self.Agent" />
+    <EntitySet Name="AgentMessages" EntityType="Self.AgentMessage" />
+    <EntitySet Name="AgentProfiles" EntityType="Self.AgentProfile" />
+    <EntitySet Name="AgentProfileThresholds" EntityType="Self.AgentProfileThreshold" />
+    <EntitySet Name="EffortEfficiencies" EntityType="Self.EffortEfficiency" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="RiskClassifications" EntityType="Self.RiskClassification" />
+    <EntitySet Name="Targets" EntityType="Self.Target" />
+    <EntitySet Name="TargetSettings" EntityType="Self.TargetSetting" />
+    <EntitySet Name="CustomerIcons" EntityType="Self.CustomerIcon" />
+    <EntitySet Name="ExpressionTypes" EntityType="Self.ExpressionType" />
+    <EntitySet Name="IconCategories" EntityType="Self.IconCategory" />
+    <EntitySet Name="IconExpressions" EntityType="Self.IconExpression" />
+    <EntitySet Name="IconMaps" EntityType="Self.IconMap" />
+    <EntitySet Name="MessageTags" EntityType="Self.MessageTag" />
+    <EntitySet Name="MessageTemplates" EntityType="Self.MessageTemplate" />
+    <EntitySet Name="MessageTemplateTags" EntityType="Self.MessageTemplateTag" />
+    <EntitySet Name="MessageTemplateTypes" EntityType="Self.MessageTemplateType" />
+    <EntitySet Name="MessageThresholds" EntityType="Self.MessageThreshold" />
+    <EntitySet Name="Tasks" EntityType="Self.Task" />
+    <EntitySet Name="MessageEfficiencyThresholds" EntityType="Self.MessageEfficiencyThreshold" />
+    <AssociationSet Name="FK_Map_DataProvider" Association="Self.FK_Map_DataProvider">
+      <End Role="DataProvider" EntitySet="DataProviders" />
+      <End Role="Map" EntitySet="Maps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PageRegistryDataProvider_DataProvider" Association="Self.FK_PageRegistryDataProvider_DataProvider">
+      <End Role="DataProvider" EntitySet="DataProviders" />
+      <End Role="PageRegistryDataProvider" EntitySet="PageRegistryDataProviders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MapItem_Map" Association="Self.FK_MapItem_Map">
+      <End Role="Map" EntitySet="Maps" />
+      <End Role="MapItem" EntitySet="MapItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PageRegistryDataProvider_PageRegistry" Association="Self.FK_PageRegistryDataProvider_PageRegistry">
+      <End Role="PageRegistryItem" EntitySet="PageRegistryItems" />
+      <End Role="PageRegistryDataProvider" EntitySet="PageRegistryDataProviders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfilePageRegistry_PageRegistry" Association="Self.FK_ProfilePageRegistry_PageRegistry">
+      <End Role="PageRegistryItem" EntitySet="PageRegistryItems" />
+      <End Role="ProfilePageRegistryItem" EntitySet="ProfilePageRegistryItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AgentProfile_Profile" Association="Self.FK_AgentProfile_Profile">
+      <End Role="Profile" EntitySet="Profiles" />
+      <End Role="AgentProfile" EntitySet="AgentProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfileContext_Profile" Association="Self.FK_ProfileContext_Profile">
+      <End Role="Profile" EntitySet="Profiles" />
+      <End Role="ProfilePageRegistryItem" EntitySet="ProfilePageRegistryItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AgentMessage_Agent" Association="Self.FK_AgentMessage_Agent">
+      <End Role="Agent" EntitySet="Agents" />
+      <End Role="AgentMessage" EntitySet="AgentMessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AgentProfile_Agent" Association="Self.FK_AgentProfile_Agent">
+      <End Role="Agent" EntitySet="Agents" />
+      <End Role="AgentProfile" EntitySet="AgentProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Target_Agent" Association="Self.FK_Target_Agent">
+      <End Role="Agent" EntitySet="Agents" />
+      <End Role="Target" EntitySet="Targets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AgentMessage_MessageTemplateType" Association="Self.FK_AgentMessage_MessageTemplateType">
+      <End Role="MessageTemplateType" EntitySet="MessageTemplateTypes" />
+      <End Role="AgentMessage" EntitySet="AgentMessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IconExpression_ExpressionType" Association="Self.FK_IconExpression_ExpressionType">
+      <End Role="ExpressionType" EntitySet="ExpressionTypes" />
+      <End Role="IconExpression" EntitySet="IconExpressions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MessageTemplate_MessageTemplateType" Association="Self.FK_MessageTemplate_MessageTemplateType">
+      <End Role="MessageTemplateType" EntitySet="MessageTemplateTypes" />
+      <End Role="MessageTemplate" EntitySet="MessageTemplates" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
