@@ -9,7 +9,7 @@ namespace WebApplication1.Controllers
 {
     public class ProfileController : Controller
     {
-        private readonly 
+        //private readonly 
         // GET: Profile
         public ActionResult Index()
         {
